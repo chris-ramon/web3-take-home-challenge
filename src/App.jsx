@@ -13,7 +13,7 @@ function App() {
 
   const config = getDefaultConfig({
     appName: 'RainbowKit demo',
-    projectId: 'YOUR_PROJECT_ID',
+    projectId: 'b41eda193e5b0ca566d790e2bc09ea13',
     chains: [mainnet, polygon, optimism, arbitrum, base, sepolia],
   });
 
