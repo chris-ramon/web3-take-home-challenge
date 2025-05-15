@@ -3,6 +3,7 @@ import Button from "../common/buttons/clipButton";
 import DefaultMessage from '../common/chatView/defaultMessage';
 import NyxChat from '../common/chatView/nyxChat';
 import TextAnimation from '../common/chatView/textAnimation';
+import CurrentUser from "../views/currentUser";
 
 function Hero() {
   useEffect(() => {
@@ -60,6 +61,7 @@ function Hero() {
       <div className="nyxContainer bg-no-repeat bg-top">
         <div>
           <div className="mt-0 md:mt-[2px]">
+            <CurrentUser />
             <div className="xl:relative xl:border-[0.5px] border-[#747474aa]">
               <div className="grid grid-cols-1 xl:grid-cols-2 z-[1]">
                 <div className="text-white pt-[32px] ps-[6px] sm:ps-[16px]" style={{ zIndex: '1' }}>
