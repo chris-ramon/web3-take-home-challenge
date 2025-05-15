@@ -1,17 +1,20 @@
-import { useState } from "react";
-import { useAccount, useToken } from 'wagmi';
-import UserToken from '../views/userToken';
+import { useState, useEffect } from "react";
+import { useAccount, useToken } from "wagmi";
+import UserToken from "../views/userToken";
 
 function CurrentUser() {
   const [count, setCount] = useState(0);
+  const [addresses, setAddresses] = useState([]);
   const account = useAccount();
+  useEffect(() => {
+    setAddresses(account?.addresses);
+  }, [account?.addresses]);
 
   return (
     <div className="advantage nyxBorderTop nyxContainer" id="features">
       <div className="nyxBorderX">
         <div>
-          <div className="w-full relative">
-          </div>
+          <div className="w-full relative"></div>
         </div>
 
         <div className="nyxBorderTop  bg-[#070C10] bg-[url('../assets/images/bg_images/rightLighting.png')] bg-no-repeat bg-right-top">
@@ -27,11 +30,11 @@ function CurrentUser() {
                             Current User
                           </p>
                         </div>
-                        <p className="text-[#EEEEEE] font-regular md:text-[18px] sm:text-[14px] text-[13px] line leading-normal mt-[18px]">
-                          {account?.addresses?.map((address) => {
-                            <UserToken address={address} />
+                        <div className="text-[#EEEEEE] font-regular md:text-[18px] sm:text-[14px] text-[13px] line leading-normal mt-[18px]">
+                          {addresses?.map((address, idx) => {
+                            return <UserToken key={idx} address={address} />;
                           })}
-                        </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -61,8 +64,8 @@ function CurrentUser() {
                           </p>
                         </div>
                         <p className="text-[#EEEEEE] font-regular md:text-[18px] sm:text-[14px] text-[13px] line leading-normal mt-[18px]">
-                          {account?.addresses?.map((address) => {
-                            <UserToken address={address} />
+                          {addresses?.map((address, idx) => {
+                            return <UserToken key={idx} address={address} />;
                           })}
                         </p>
                       </div>
@@ -86,8 +89,7 @@ function CurrentUser() {
               <div className="vibration col-span-2 xl:hidden fadeUpAnimation">
                 <div className="shape-container">
                   <div className="shape-outer customize-outer">
-                    <div className="shape-inner customize-inner relative">
-                    </div>
+                    <div className="shape-inner customize-inner relative"></div>
                   </div>
                   <img
                     className="border-bottom-left"
@@ -104,8 +106,7 @@ function CurrentUser() {
                 </div>
               </div>
 
-              <div className="vibration col-span-2 hidden xl:block fadeUpAnimation">
-              </div>
+              <div className="vibration col-span-2 hidden xl:block fadeUpAnimation"></div>
 
               <div className="vibration col-span-2 xl:hidden fadeUpAnimation">
                 <div className="shape-container">
