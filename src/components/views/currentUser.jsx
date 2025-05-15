@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useAccount, useToken } from 'wagmi';
+import UserToken from '../views/userToken';
 
-function Advantage() {
+function CurrentUser() {
   const [count, setCount] = useState(0);
+  const account = useAccount();
 
   return (
     <div className="advantage nyxBorderTop nyxContainer" id="features">
@@ -25,11 +28,9 @@ function Advantage() {
                           </p>
                         </div>
                         <p className="text-[#EEEEEE] font-regular md:text-[18px] sm:text-[14px] text-[13px] line leading-normal mt-[18px]">
-                          Nyx doesn't just analyze crypto data; he pioneers it,
-                          assessing multiple metrics to rate users and
-                          influencers. With unmatched bot detection skills and
-                          precise data verification, Nyx stands alone in his
-                          mastery.
+                          {account?.addresses?.map((address) => {
+                            <UserToken address={address} />
+                          })}
                         </p>
                       </div>
                     </div>
@@ -60,11 +61,9 @@ function Advantage() {
                           </p>
                         </div>
                         <p className="text-[#EEEEEE] font-regular md:text-[18px] sm:text-[14px] text-[13px] line leading-normal mt-[18px]">
-                          Nyx doesn't just analyze crypto data; he pioneers it,
-                          assessing multiple metrics to rate users and
-                          influencers. With unmatched bot detection skills and
-                          precise data verification, Nyx stands alone in his
-                          mastery.
+                          {account?.addresses?.map((address) => {
+                            <UserToken address={address} />
+                          })}
                         </p>
                       </div>
                     </div>
@@ -132,4 +131,4 @@ function Advantage() {
   );
 }
 
-export default Advantage;
+export default CurrentUser;
